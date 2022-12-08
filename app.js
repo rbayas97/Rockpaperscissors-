@@ -45,8 +45,10 @@ function game(){
     }
     if (playerScore > computerScore){
         console.log("You won the game, you are smarter than the computer!");
-    } else {
+    } else if (playerScore < computerScore) {
         console.log("You lost, try again next time!");
+    } else {
+        console.log("You tied! Dare to try again?")
     }
 
 }
