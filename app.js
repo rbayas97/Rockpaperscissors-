@@ -1,18 +1,14 @@
-// const playerSelection = prompt("Please choose between Rock, Paper, or Scissors:")
-// const computerSelection = getComputerChoice();
-// let playerScore = 0;
-// let computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 
 function getComputerChoice(){
     let compchoices = ['Rock', 'Paper', 'Scissors'];
     let randomchoices = compchoices[Math.floor(Math.random() * compchoices.length)];
-    return randomchoices;
+    return randomchoices
 }
 
 function playRound(playerSelection, computerSelection){
-    let playerScore = 0;
-    let computerScore = 0;
     const playerSelectionCI = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
     if (playerSelectionCI === computerSelection){
         return ("Draw! Nobody Wins");
@@ -44,10 +40,15 @@ function game(){
     for (let i = 0; i < 5; i++){
         const playerSelection = prompt("Please choose between Rock, Paper, or Scissors:");
         const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
         console.log(playRound(playerSelection, computerSelection));
-
+        console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
     }
+    if (playerScore > computerScore){
+        console.log("You won the game, you are smarter than the computer!");
+    } else {
+        console.log("You lost, try again next time!");
+    }
+
 }
 
 game();
