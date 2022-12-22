@@ -1,16 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
-
-const buttons = document.querySelectorAll('button');
-
 let playerButton; 
-
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        playerButton = button.textContent;
-        playRound();
-    });
-});
+const buttons = document.querySelectorAll('button');
 
 function getComputerChoice(){
     let compchoices = ['Rock', 'Paper', 'Scissors'];
@@ -22,6 +13,7 @@ function playRound(playerSelection, computerSelection){
     playerSelection = playerButton;
     computerSelection = getComputerChoice();
     console.log(playerSelection, computerSelection);
+
     if (playerSelection === computerSelection){
         console.log ("Draw! Nobody Wins");
     }  else if (playerSelection === 'Rock' && computerSelection === 'Paper'){
@@ -48,7 +40,30 @@ function playRound(playerSelection, computerSelection){
 
 }
 
+function winningUser() {
+    if (playerScore == 5){
+        playerScore = 0;
+        computerScore = 0;
+        alert("You won the Game! Click to play Again")
+    } else if (computerScore == 5){
+        playerScore = 0;
+        computerScore = 0;
+        alert("You lost the game! Click to play Again")
+    }
+}
 
+function game() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            playerButton = button.textContent;
+            playRound();
+            console.log(playerScore, computerScore)
+            winningUser()
+        });
+    });
+}
+
+game()
 
 
 
