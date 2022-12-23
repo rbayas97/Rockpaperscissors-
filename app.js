@@ -40,11 +40,12 @@ function playRound(playerSelection, computerSelection){
 
 function scoreTable() {
     content.classList.add('content');
-    content.textContent = `Player Score ${playerScore}, Computer Score ${computerScore}`;
+    content.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
     body.appendChild(content);
 }
+
 function updateScore() {
-    content.textContent = `Player Score ${playerScore}, Computer Score ${computerScore}`;
+    content.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`;
 }
 
 function winningUser() {
@@ -56,11 +57,11 @@ function winningUser() {
         playerScore = 0;
         computerScore = 0;
         alert("You lost the game! Press OK to play Again")
-    }
+    } updateScore();
 }
 
 function game() {
-    roundScoreTable();
+    scoreTable();
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerButton = button.textContent;
@@ -74,24 +75,3 @@ function game() {
 }
 
 game()
-
-
-
-// function game(){
-//     // for (let i = 0; i < 5; i++){
-//     //     const playerSelection = prompt("Please choose between Rock, Paper, or Scissors:");
-//     //     const computerSelection = getComputerChoice();
-//     //     console.log(playRound(playerSelection, computerSelection));
-//     //     console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
-//     // }
-//     if (playerScore > computerScore){
-//         console.log("You won the game, you are smarter than the computer!");
-//     } else if (playerScore < computerScore) {
-//         console.log("You lost, try again next time!");
-//     } else {
-//         console.log("You tied! Dare to try again?")
-//     }
-
-// }
-
-// game();
