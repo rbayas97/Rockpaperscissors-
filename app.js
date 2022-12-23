@@ -3,6 +3,7 @@ let computerScore = 0;
 let playerButton; 
 const buttons = document.querySelectorAll('button');
 const body = document.querySelector('body');
+const message = document.createElement('div')
 const content = document.createElement('div');
 
 function getComputerChoice(){
@@ -13,34 +14,42 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
-        console.log ("Draw! Nobody Wins");
+        message.textContent = 'Draw! Nobody gets a point';
+        body.appendChild(message);
     }  else if (playerSelection === 'Rock' && computerSelection === 'Paper'){
         computerScore += 1;
-        console.log ("You lose! Paper beats Rock");
+        message.textContent =  "You lose! Paper beats Rock";
+        body.appendChild(message);
     }  else if (playerSelection === 'Rock' && computerSelection === 'Scissors'){
         playerScore += 1;
-        console.log ("You win! Rock beats Scissors"); 
+        message.textContent = "You win! Rock beats Scissors"; 
+        body.appendChild(message);
     }  else if (playerSelection === 'Paper' && computerSelection === 'Rock'){
         playerScore += 1;
-        console.log ("You win! Paper beats Rock"); 
+        message.textContent = "You win! Paper beats Rock"; 
+        body.appendChild(message);
     }  else if (playerSelection === 'Paper' && computerSelection === "Scissors"){
         computerScore += 1;
-        console.log ("You lose! Scissors beats Paper"); 
+        message.textContent = "You lose! Scissors beats Paper"; 
+        body.appendChild(message);
     }  else if (playerSelection === 'Scissors' && computerSelection === 'Rock'){
         computerScore += 1;
-        console.log ("You lose! Rock beats Scissors"); 
+        message.textContent =  "You lose! Rock beats Scissors"; 
+        body.appendChild(message);
     }  else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
         playerScore += 1;
-        console.log ("You win! Scissors beats Paper");
+        message.textContent = "You win! Scissors beats Paper";
+        body.appendChild(message);
     }  else {
-        console.log ("We can't play the game");
+        message.textContent = "We can't play the game";
+        body.appendChild(message);
     } 
 
 }
 
 function scoreTable() {
     content.classList.add('content');
-    content.textContent = `Player Score ${playerScore} Computer Score ${computerScore}`;
+    content.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`;
     body.appendChild(content);
 }
 
