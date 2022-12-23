@@ -3,6 +3,7 @@ let computerScore = 0;
 let playerButton; 
 const buttons = document.querySelectorAll('button');
 const body = document.querySelector('body');
+const content = document.createElement('div');
 
 function getComputerChoice(){
     let compchoices = ['Rock', 'Paper', 'Scissors'];
@@ -37,12 +38,13 @@ function playRound(playerSelection, computerSelection){
 
 }
 
-
-function roundResults() {
-    const content = document.createElement('div');
+function scoreTable() {
     content.classList.add('content');
     content.textContent = `Player Score ${playerScore}, Computer Score ${computerScore}`;
     body.appendChild(content);
+}
+function updateScore() {
+    content.textContent = `Player Score ${playerScore}, Computer Score ${computerScore}`;
 }
 
 function winningUser() {
@@ -58,13 +60,14 @@ function winningUser() {
 }
 
 function game() {
+    roundScoreTable();
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerButton = button.textContent;
             playerSelection = playerButton;
             computerSelection = getComputerChoice();
             playRound(playerSelection, computerSelection);
-            roundResults();
+            updateScore();
             winningUser();
         });
     });
