@@ -2,6 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerButton; 
 const buttons = document.querySelectorAll('button');
+const body = document.querySelector('body');
 
 function getComputerChoice(){
     let compchoices = ['Rock', 'Paper', 'Scissors'];
@@ -10,10 +11,6 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerButton;
-    computerSelection = getComputerChoice();
-    console.log(playerSelection, computerSelection);
-
     if (playerSelection === computerSelection){
         console.log ("Draw! Nobody Wins");
     }  else if (playerSelection === 'Rock' && computerSelection === 'Paper'){
@@ -40,15 +37,23 @@ function playRound(playerSelection, computerSelection){
 
 }
 
+
+function roundResults() {
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = `Player Score ${playerScore}, Computer Score ${computerScore}`;
+    body.appendChild(content);
+}
+
 function winningUser() {
     if (playerScore == 5){
         playerScore = 0;
         computerScore = 0;
-        alert("You won the Game! Click to play Again")
+        alert("You won the Game! Press OK to play Again")
     } else if (computerScore == 5){
         playerScore = 0;
         computerScore = 0;
-        alert("You lost the game! Click to play Again")
+        alert("You lost the game! Press OK to play Again")
     }
 }
 
@@ -56,9 +61,11 @@ function game() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerButton = button.textContent;
-            playRound();
-            console.log(playerScore, computerScore)
-            winningUser()
+            playerSelection = playerButton;
+            computerSelection = getComputerChoice();
+            playRound(playerSelection, computerSelection);
+            roundResults();
+            winningUser();
         });
     });
 }
